@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\AdministratorController;
+use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,6 +20,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get("/test", function () {
-    return view('test');
+Route::get("admin-panel/dashboard", [DashboardController::class, 'index'])->name('admin.dashboard');
+
+Route::get('admin-panel/administrator', [AdministratorController::class, 'index'])->name('administrator.index');
+
+Route::prefix('admin-panel/administrator/')->name('administrator.')->group(function () {
+
+    Route::get('show/{id}', [AdministratorController::class, 'show'])->name('show');
 });
