@@ -6,8 +6,7 @@ use Illuminate\Http\Request;
 
 class DashboardController extends Controller
 {
-    // index display all administrator data in the administrator index page
-    public function index()
+    public function __invoke()
     {
         return view('admin.index');
     }

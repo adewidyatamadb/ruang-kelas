@@ -6,7 +6,7 @@
 
 @section('content')
     <div class="col-md-12">
-        <a href="" class="btn btn-sm btn-primary float-right"><i class="ti-plus"></i> Add new administrator</a>
+        <a href="{{route('administrator.create')}}" class="float-right btn btn-sm btn-primary"><i class="ti-plus"></i> Add new administrator</a>
         <div class="clearfix"></div>
         <table class="table table-striped table-hover">
             <thead>
@@ -21,7 +21,7 @@
                 @foreach ($administrators as $administrator)
                     <tr>
                         <td>{{$administrator->id}}</td>
-                        <td><a href="{{route('administrator.show', ['id' => $administrator->id])}}">{{$administrator->name}}</a></td>
+                        <td><a href="{{route('administrator.edit', ['id' => $administrator->id])}}">{{$administrator->name}}</a></td>
                         <td>{{$administrator->email}}</td>
                         <td>{{$administrator->jabatan}}</td>
                     </tr>

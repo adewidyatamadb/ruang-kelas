@@ -20,11 +20,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get("admin-panel/dashboard", [DashboardController::class, 'index'])->name('admin.dashboard');
+Route::get("admin-panel/dashboard", DashboardController::class)->name('admin.dashboard');
 
 Route::get('admin-panel/administrator', [AdministratorController::class, 'index'])->name('administrator.index');
 
 Route::prefix('admin-panel/administrator/')->name('administrator.')->group(function () {
-
-    Route::get('show/{id}', [AdministratorController::class, 'show'])->name('show');
+    Route::get('create', [AdministratorController::class, 'create'])->name('create');
+    Route::get('store', [AdministratorController::class, 'store'])->name('store');
+    Route::get('edit/{id}', [AdministratorController::class, 'edit'])->name('edit');
+    Route::put('update/{id}', [AdministratorController::class, 'update'])->name('update');
 });
