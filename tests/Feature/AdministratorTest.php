@@ -18,7 +18,7 @@ class AdministratorTest extends TestCase
 
         $response->assertStatus(200);
 
-        $response->assertSeeText('Administrator');
+        $response->assertViewHas('administrators');
     }
 
     // testing the create administrator page
@@ -28,7 +28,8 @@ class AdministratorTest extends TestCase
 
         $response->assertStatus(200);
 
-        $response->assertSee('store');
+        $response->assertSee(route('administrator.store'));
+        $response->assertSee('POST');
     }
 
     // testing the edit administrator page
@@ -40,9 +41,11 @@ class AdministratorTest extends TestCase
 
         $response = $this->get(route('administrator.edit', ['id' => $administrator->id]));
 
+        $response->assertStatus(200);
+
+        $response->assertViewHas('administrator');
         $response->assertSee(route('administrator.update', ['id' => $administrator->id]));
         $response->assertSee('PUT');
         $response->assertSee($administrator->name);
-        $response->assertViewHas('administrator', $administrator);
     }
 }
