@@ -26,7 +26,8 @@ Route::get('admin-panel/administrator', [AdministratorController::class, 'index'
 
 Route::prefix('admin-panel/administrator/')->name('administrator.')->group(function () {
     Route::get('create', [AdministratorController::class, 'create'])->name('create');
-    Route::get('store', [AdministratorController::class, 'store'])->name('store');
+    Route::post('store', [AdministratorController::class, 'store'])->name('store');
     Route::get('edit/{id}', [AdministratorController::class, 'edit'])->name('edit');
     Route::put('update/{id}', [AdministratorController::class, 'update'])->name('update');
+    Route::delete('delete/{id}', [AdministratorController::class, 'destroy'])->name('delete');
 });

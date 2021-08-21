@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Http\Requests\AdministratorRequest;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -19,8 +20,26 @@ class Administrator extends Model
     }
 
     // getAdministrator return one administrator data
-    public function getOneAdministrator($id)
+    public function getAdministrator($id): Administrator
     {
-        return $this->find($id)->first();
+        return $this->findOrFail($id);
+    }
+
+    // addAdministrator adding administrator to the database
+    public function addAdministrator(AdministratorRequest $request): object
+    {
+        return $this->create($request->validated());
+    }
+
+    // updateAdministrator updating administrator data
+    public function updateAdministrator(AdministratorRequest $request,  $id): bool
+    {
+        return $this->findOrFail($id)->update($request->validated());
+    }
+
+    // deleteAdministrator deleting administrator data from database
+    public function deleteAdministrator($id): bool
+    {
+        return $this->findOrFail($id)->delete();
     }
 }
