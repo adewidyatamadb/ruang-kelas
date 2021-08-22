@@ -35,5 +35,17 @@
     </div>
     <button type="submit" class="mr-2 btn btn-primary">Submit</button>
     <a href="{{route('administrator.index')}}" class="btn btn-light">Cancel</a>
+    @if (isset($administrator))
+        <a href="#!" class="float-right btn btn-danger" onclick="deleteData()">Delete</a>
+        <div class="clearfix"></div>
+    @endif
 </form>
+
+@if (isset($administrator))
+    <form action="{{route('administrator.delete', ['id' => $administrator->id])}}" method="post" id="deleteForm">
+        @method('DELETE')
+        @csrf
+    </form>
+@endif
+
 

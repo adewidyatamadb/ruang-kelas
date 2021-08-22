@@ -37,5 +37,9 @@
           }, false)
         })
     })()
-    </script>
+
+    function deleteData(){
+        document.getElementById('deleteForm').submit();
+    }
+</script>
 @endsection

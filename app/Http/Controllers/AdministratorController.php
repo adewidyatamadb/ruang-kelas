@@ -57,6 +57,6 @@ class AdministratorController extends Controller
     public function destroy($id): RedirectResponse
     {
         $this->administrator->deleteAdministrator($id);
-        return redirect(route('administrator.index'));
+        return redirect(route('administrator.index'))->with('success', 'Successfully deleting administrator');
     }
 }
