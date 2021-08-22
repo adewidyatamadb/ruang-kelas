@@ -26,7 +26,7 @@ class AdministratorRequest extends FormRequest
     {
         return [
             'name' => 'required',
-            'email' => 'required|email',
+            'email' => 'required|email|unique:users',
             'jabatan' => 'required'
         ];
     }
@@ -34,10 +34,10 @@ class AdministratorRequest extends FormRequest
     public function messages()
     {
         return [
-            'name.required' => 'field name should not be empty',
-            'email.required' => 'field email should not be empty',
-            'email.email' => 'invalid email format',
-            'jabatan.required' => 'field jabatan should not be empty',
+            'name.required' => 'Field name should not be empty',
+            'email.required' => 'Field email should not be empty',
+            'email.email' => 'Invalid email format',
+            'jabatan.required' => 'Field jabatan should not be empty',
         ];
     }
 }

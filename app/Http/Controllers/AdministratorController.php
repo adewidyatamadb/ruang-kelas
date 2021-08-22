@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\AdministratorRequest;
 use Illuminate\Contracts\View\View;
-use Illuminate\Http\Request;
 use App\Models\Administrator;
 use Illuminate\Http\RedirectResponse;
 
@@ -35,7 +34,7 @@ class AdministratorController extends Controller
     public function store(AdministratorRequest $request): RedirectResponse
     {
         $this->administrator->addAdministrator($request);
-        return redirect(route('administrator.index'));
+        return redirect(route('administrator.index'))->with('success', "Successfully adding administrator");
     }
 
     // edit return view of the edit administator page
@@ -51,7 +50,7 @@ class AdministratorController extends Controller
     public function update(AdministratorRequest $request, $id): RedirectResponse
     {
         $this->administrator->updateAdministrator($request, $id);
-        return redirect(route('administrator.index'));
+        return redirect(route('administrator.index'))->with('success', "Successfully updating administrator");
     }
 
     // destroy is controller to delete data and redirect them to the administrator index if success

@@ -7,15 +7,19 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <title>Administration</title>
         <!-- plugins:css -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
         <link rel="stylesheet" href="{{asset('assets/admin/vendors/ti-icons/css/themify-icons.css')}}">
         <link rel="stylesheet" href="{{asset('assets/admin/vendors/base/vendor.bundle.base.css')}}">
+
         <!-- endinject -->
         <!-- plugin css for this page -->
         <!-- End plugin css for this page -->
         <!-- inject:css -->
         <link rel="stylesheet" href="{{asset('assets/admin/css/style.css')}}">
+
         <!-- endinject -->
         <link rel="shortcut icon" href="{{asset('assets/admin/images/favicon.png')}}" />
+
         @yield('css')
         <style>
             .content-wrapper{
@@ -25,6 +29,9 @@
                 .navbar .navbar-brand-wrapper button{
                     display:none;
                 }
+            }
+            .alert{
+                height: 3.5rem;
             }
         </style>
     </head>
@@ -94,14 +101,19 @@
                 <div class="content-wrapper">
                     <div class="row">
                         <div class="col-md-12 grid-margin">
-                            <div class="d-flex justify-content-between align-items-center">
+                            {{-- <div class="d-flex justify-content-between align-items-center">
                                 <div>
                                     <h4 class="mb-0 font-weight-bold">@yield('page-title')</h4>
                                 </div>
-                                <div>
 
+
+                            </div> --}}
+                            @if (Session::has('success'))
+                                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                    <p class="mt-1">{{session('success')}}</p>
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                                 </div>
-                            </div>
+                            @endif
                         </div>
                     </div>
                 <div class="row">
@@ -123,6 +135,8 @@
         <!-- container-scroller -->
 
         <!-- plugins:js -->
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js" integrity="sha384-eMNCOe7tC1doHpGoWe/6oMVemdAVTMs2xqW4mwXrXsW0L84Iytr2wi5v2QjrP/xp" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.min.js" integrity="sha384-cn7l7gDp0eyniUwwAZgrzD06kc/tftFf19TOAs2zVinnD/C7E91j9yyk5//jjpt/" crossorigin="anonymous"></script>
         <script src="{{asset('assets/admin/vendors/base/vendor.bundle.base.js')}}"></script>
         <!-- endinject -->
         <!-- Plugin js for this page-->

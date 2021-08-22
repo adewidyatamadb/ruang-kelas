@@ -11,7 +11,7 @@ class Administrator extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['id', 'name', 'email', 'jabatan'];
+    protected $fillable = ['name', 'email', 'jabatan'];
 
     // getAllAdministrator return all administrator data in ascending order by name
     public function getAllAdministrator(): Collection
